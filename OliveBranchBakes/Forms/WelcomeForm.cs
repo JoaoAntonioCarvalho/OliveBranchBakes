@@ -37,5 +37,11 @@ namespace OliveBranchBakes.Forms
             ProjectInfoForm infoForm = new ProjectInfoForm();
             infoForm.ShowDialog();
         }
+
+        private void lnkMenuData_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MenuDataForm menuForm = new MenuDataForm();
+            menuForm.ShowDialog();
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace OliveBranchBakes.Forms
             btnAccount = new Button();
             btnAdmin = new Button();
             lnkAbout = new LinkLabel();
+            lnkMenuData = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             SuspendLayout();
             // 
@@ -151,6 +152,20 @@ namespace OliveBranchBakes.Forms
             lnkAbout.TabStop = true;
             lnkAbout.Text = "About this project";
             lnkAbout.LinkClicked += lnkAbout_LinkClicked;
+            //
+            // lnkMenuData
+            //
+            lnkMenuData.ActiveLinkColor = Color.FromArgb(196, 98, 45);
+            lnkMenuData.AutoSize = true;
+            lnkMenuData.Font = new Font("Segoe UI", 11F);
+            lnkMenuData.LinkColor = Color.FromArgb(91, 107, 47);
+            lnkMenuData.Location = new Point(700, 635);
+            lnkMenuData.Name = "lnkMenuData";
+            lnkMenuData.Size = new Size(90, 25);
+            lnkMenuData.TabIndex = 4;
+            lnkMenuData.TabStop = true;
+            lnkMenuData.Text = "Menu Data";
+            lnkMenuData.LinkClicked += lnkMenuData_LinkClicked;
             // 
             // WelcomeForm
             // 
@@ -159,6 +174,7 @@ namespace OliveBranchBakes.Forms
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(251, 246, 236);
             ClientSize = new Size(1000, 680);
+            Controls.Add(lnkMenuData);
             Controls.Add(lnkAbout);
             Controls.Add(btnAdmin);
             Controls.Add(btnAccount);
@@ -191,5 +207,6 @@ namespace OliveBranchBakes.Forms
         private Button btnAccount;
         private Button btnAdmin;
         private LinkLabel lnkAbout;
+        private LinkLabel lnkMenuData;
     }
 }
