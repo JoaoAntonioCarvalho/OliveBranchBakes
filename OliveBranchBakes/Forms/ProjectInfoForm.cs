@@ -8,7 +8,7 @@ namespace OliveBranchBakes.Forms
 
             lblProjectNameValue.Text = "Olive Branch Bakes Order System";
             lblStudentNameValue.Text = "Joao Antonio Carvalho";
-            lblPhaseValue.Text = "Phase 2 - Solution Architecture and Interface Prototype";
+            lblPhaseValue.Text = "Checkpoint 3A - DataStore and Test Cases";
             lblClassValue.Text = "Object Oriented Programming - CLASS NUMBER"; // TODO: add class number
             lblDateValue.Text = DateTime.Today.ToString("MMMM d, yyyy");
             lblDescriptionValue.Text = "A Windows app for Olive Branch Bakes. Olivia can record orders in one place, " +
