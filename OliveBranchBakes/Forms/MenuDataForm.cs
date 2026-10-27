@@ -8,50 +8,26 @@ namespace OliveBranchBakes.Forms
     public partial class MenuDataForm : Form
     {
         private DataStore store = new DataStore();
-        private BindingList<MenuItem> menuItems = new BindingList<MenuItem>();
+        private BindingList<MenuItem> menuItems;
 
         public MenuDataForm()
         {
             InitializeComponent();
             lblPath.Text = "File: " + store.FilePath;
-            LoadGrid(store.LoadMenu());
-            ShowSource();
-        }
-
-        private void LoadGrid(List<MenuItem> items)
-        {
-            menuItems = new BindingList<MenuItem>(items);
+            menuItems = new BindingList<MenuItem>(store.LoadMenu());
             dgvMenu.DataSource = menuItems;
-        }
-
-        private void ShowSource()
-        {
-            if (store.LoadedFromFile)
-            {
-                lblSource.Text = "Data loaded from the saved file.";
-            }
-            else
-            {
-                lblSource.Text = "Data loaded from the seed menu.";
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             dgvMenu.EndEdit();
             store.SaveMenu(new List<MenuItem>(menuItems));
-            lblSource.Text = "Saved at " + DateTime.Now.ToString("h:mm:ss tt") + ".";
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void dgvMenu_DataError(object? sender, DataGridViewDataErrorEventArgs e)
         {
-            LoadGrid(store.GetSeedMenu());
-            lblSource.Text = "Seed menu is showing. Click Save to keep it.";
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            MessageBox.Show("Please type a number for the price.");
+            e.ThrowException = false;
         }
     }
 }

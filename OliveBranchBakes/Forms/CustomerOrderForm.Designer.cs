@@ -508,7 +508,7 @@ namespace OliveBranchBakes.Forms
             lblMenuHint.Name = "lblMenuHint";
             lblMenuHint.Size = new Size(398, 60);
             lblMenuHint.TabIndex = 12;
-            lblMenuHint.Text = "Tap an item, choose how many, then tap Add to Order. Only items that are available today are shown.";
+            lblMenuHint.Text = "Tap an item, choose how many, then tap Add to Order.";
             // 
             // pnlOrder
             // 

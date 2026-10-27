@@ -10,9 +10,6 @@ namespace OliveBranchBakes.Services
         private string folderPath;
         private string filePath;
 
-        // true when the last LoadMenu() read the file, false when it used the seed data
-        public bool LoadedFromFile { get; private set; }
-
         public string FilePath
         {
             get { return filePath; }
@@ -72,7 +69,6 @@ namespace OliveBranchBakes.Services
             {
                 List<MenuItem> seed = GetSeedMenu();
                 SaveMenu(seed);
-                LoadedFromFile = false;
                 return seed;
             }
 
@@ -84,13 +80,11 @@ namespace OliveBranchBakes.Services
                 {
                     throw new Exception("The menu file is empty.");
                 }
-                LoadedFromFile = true;
                 return items;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not read the menu file, using the seed menu instead. " + ex.Message);
-                LoadedFromFile = false;
                 return GetSeedMenu();
             }
         }

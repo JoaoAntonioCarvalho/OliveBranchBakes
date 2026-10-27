@@ -58,7 +58,7 @@ namespace OliveBranchBakes.Forms
             // tblInfo
             // 
             tblInfo.ColumnCount = 2;
-            tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
             tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblInfo.Controls.Add(lblProjectName, 0, 0);
             tblInfo.Controls.Add(lblProjectNameValue, 1, 0);
@@ -75,18 +75,18 @@ namespace OliveBranchBakes.Forms
             tblInfo.Location = new Point(20, 65);
             tblInfo.Name = "tblInfo";
             tblInfo.RowCount = 6;
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            tblInfo.Size = new Size(540, 265);
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tblInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 130F));
+            tblInfo.Size = new Size(700, 320);
             // 
             // lblProjectName
             // 
             lblProjectName.Dock = DockStyle.Fill;
-            lblProjectName.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblProjectName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblProjectName.Name = "lblProjectName";
             lblProjectName.Text = "Project Name:";
             lblProjectName.TextAlign = ContentAlignment.MiddleLeft;
@@ -101,7 +101,7 @@ namespace OliveBranchBakes.Forms
             // lblStudentName
             // 
             lblStudentName.Dock = DockStyle.Fill;
-            lblStudentName.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblStudentName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblStudentName.Name = "lblStudentName";
             lblStudentName.Text = "Student Name:";
             lblStudentName.TextAlign = ContentAlignment.MiddleLeft;
@@ -116,7 +116,7 @@ namespace OliveBranchBakes.Forms
             // lblPhase
             // 
             lblPhase.Dock = DockStyle.Fill;
-            lblPhase.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblPhase.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblPhase.Name = "lblPhase";
             lblPhase.Text = "Current Phase:";
             lblPhase.TextAlign = ContentAlignment.MiddleLeft;
@@ -131,7 +131,7 @@ namespace OliveBranchBakes.Forms
             // lblClass
             // 
             lblClass.Dock = DockStyle.Fill;
-            lblClass.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblClass.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblClass.Name = "lblClass";
             lblClass.Text = "Class:";
             lblClass.TextAlign = ContentAlignment.MiddleLeft;
@@ -146,7 +146,7 @@ namespace OliveBranchBakes.Forms
             // lblDate
             // 
             lblDate.Dock = DockStyle.Fill;
-            lblDate.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblDate.Name = "lblDate";
             lblDate.Text = "Date:";
             lblDate.TextAlign = ContentAlignment.MiddleLeft;
@@ -161,7 +161,7 @@ namespace OliveBranchBakes.Forms
             // lblDescription
             // 
             lblDescription.Dock = DockStyle.Fill;
-            lblDescription.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblDescription.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblDescription.Name = "lblDescription";
             lblDescription.Text = "Description:";
             lblDescription.TextAlign = ContentAlignment.TopLeft;
@@ -175,24 +175,27 @@ namespace OliveBranchBakes.Forms
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(460, 345);
+            btnClose.Location = new Point(560, 400);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(100, 32);
+            btnClose.Size = new Size(160, 50);
             btnClose.Text = "Close";
-            btnClose.UseVisualStyleBackColor = true;
+            btnClose.BackColor = Color.FromArgb(91, 107, 47);
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.ForeColor = Color.FromArgb(251, 246, 236);
+            btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
             // ProjectInfoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 395);
+            ClientSize = new Size(740, 470);
             Controls.Add(lblTitle);
             Controls.Add(tblInfo);
             Controls.Add(btnClose);
             BackColor = Color.FromArgb(251, 246, 236);
             ForeColor = Color.FromArgb(74, 46, 26);
-            Font = new Font("Segoe UI", 9.75F);
+            Font = new Font("Segoe UI", 12F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "ProjectInfoForm";
