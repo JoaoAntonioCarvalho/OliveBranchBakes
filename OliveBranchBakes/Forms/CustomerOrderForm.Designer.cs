@@ -565,7 +565,6 @@ namespace OliveBranchBakes.Forms
             lvOrder.Name = "lvOrder";
             lvOrder.Size = new Size(308, 290);
             lvOrder.TabIndex = 0;
-            lvOrder.UseCompatibleStateImageIndex = false;
             lvOrder.View = View.Details;
             // 
             // lblTotal
