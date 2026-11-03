@@ -104,6 +104,7 @@ namespace OliveBranchBakes.Forms
             colSeasonal.DataPropertyName = "IsSeasonal";
             colSeasonal.HeaderText = "Seasonal";
             colSeasonal.Name = "colSeasonal";
+            colSeasonal.ReadOnly = true;
             colSeasonal.Width = 150;
             //
             // lblPath

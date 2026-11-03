@@ -25,24 +25,42 @@ namespace OliveBranchBakes.Services
         public List<MenuItem> GetSeedMenu()
         {
             List<MenuItem> items = new List<MenuItem>();
-            items.Add(CreateItem(1, "Chocolate Chip Cookies", "dozen", 12.00m, false));
-            items.Add(CreateItem(2, "Cinnamon Rolls", "6 pack", 15.00m, false));
-            items.Add(CreateItem(3, "Sourdough Bread", "loaf", 8.00m, false));
-            items.Add(CreateItem(4, "Blueberry Muffins", "dozen", 14.00m, false));
-            items.Add(CreateItem(5, "Birthday Cake (8 in)", "each", 35.00m, false));
-            items.Add(CreateItem(6, "Pumpkin Bread", "loaf", 9.00m, true));
+            items.Add(CreateItem(1, "Chocolate Chip Cookies", "dozen", 12.00m, MenuCategory.Cookies));
+            items.Add(CreateItem(2, "Cinnamon Rolls", "6 pack", 15.00m, MenuCategory.Pastries));
+            items.Add(CreateItem(3, "Sourdough Bread", "loaf", 8.00m, MenuCategory.Breads));
+            items.Add(CreateItem(4, "Blueberry Muffins", "dozen", 14.00m, MenuCategory.Pastries));
+            items.Add(CreateItem(5, "Birthday Cake (8 in)", "each", 35.00m, MenuCategory.Cakes));
+
+            // Pumpkin Bread is only sold in the fall, September 1 to November 30
+            items.Add(CreateSeasonalItem(6, "Pumpkin Bread", "loaf", 9.00m, MenuCategory.Breads,
+                new DateTime(2000, 9, 1), new DateTime(2000, 11, 30)));
             return items;
         }
 
-        private MenuItem CreateItem(int id, string name, string description, decimal price, bool isSeasonal)
+        private MenuItem CreateItem(int id, string name, string description, decimal price, MenuCategory category)
         {
-            MenuItem item = new MenuItem();
+            RegularMenuItem item = new RegularMenuItem();
             item.MenuItemId = id;
             item.Name = name;
             item.Description = description;
             item.Price = price;
             item.IsAvailable = true;
-            item.IsSeasonal = isSeasonal;
+            item.Category = category;
+            return item;
+        }
+
+        private MenuItem CreateSeasonalItem(int id, string name, string description, decimal price,
+            MenuCategory category, DateTime seasonStart, DateTime seasonEnd)
+        {
+            SeasonalMenuItem item = new SeasonalMenuItem();
+            item.MenuItemId = id;
+            item.Name = name;
+            item.Description = description;
+            item.Price = price;
+            item.IsAvailable = true;
+            item.Category = category;
+            item.SeasonStart = seasonStart;
+            item.SeasonEnd = seasonEnd;
             return item;
         }
 
