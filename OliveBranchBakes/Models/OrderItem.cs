@@ -9,8 +9,7 @@ namespace OliveBranchBakes.Models
 
         public decimal GetLineTotal()
         {
-            // TODO (later phase)
-            throw new NotImplementedException();
+            return UnitPrice * Quantity;
         }
     }
 }
