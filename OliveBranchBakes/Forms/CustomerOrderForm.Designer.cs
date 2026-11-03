@@ -52,12 +52,9 @@ namespace OliveBranchBakes.Forms
             rbHasAllergy = new RadioButton();
             txtAllergyDetails = new TextBox();
             lblMenuHeader = new Label();
-            btnItem1 = new Button();
-            btnItem2 = new Button();
-            btnItem3 = new Button();
-            btnItem4 = new Button();
-            btnItem5 = new Button();
-            btnItem6 = new Button();
+            lblCategory = new Label();
+            cboCategory = new ComboBox();
+            flpItems = new FlowLayoutPanel();
             lblQty = new Label();
             nudQty = new NumericUpDown();
             btnAddItem = new Button();
@@ -68,6 +65,7 @@ namespace OliveBranchBakes.Forms
             colQty = new ColumnHeader();
             colPrice = new ColumnHeader();
             lblTotal = new Label();
+            btnChangeQty = new Button();
             btnRemoveItem = new Button();
             lblPickupNote = new Label();
             pnlFooter = new Panel();
@@ -258,6 +256,7 @@ namespace OliveBranchBakes.Forms
             dtpPickup.Name = "dtpPickup";
             dtpPickup.Size = new Size(330, 34);
             dtpPickup.TabIndex = 3;
+            dtpPickup.ValueChanged += dtpPickup_ValueChanged;
             // 
             // pnlAllergy
             // 
@@ -338,12 +337,9 @@ namespace OliveBranchBakes.Forms
             pnlMenu.Controls.Add(btnAddItem);
             pnlMenu.Controls.Add(nudQty);
             pnlMenu.Controls.Add(lblQty);
-            pnlMenu.Controls.Add(btnItem6);
-            pnlMenu.Controls.Add(btnItem5);
-            pnlMenu.Controls.Add(btnItem4);
-            pnlMenu.Controls.Add(btnItem3);
-            pnlMenu.Controls.Add(btnItem2);
-            pnlMenu.Controls.Add(btnItem1);
+            pnlMenu.Controls.Add(flpItems);
+            pnlMenu.Controls.Add(cboCategory);
+            pnlMenu.Controls.Add(lblCategory);
             pnlMenu.Controls.Add(lblMenuHeader);
             pnlMenu.Dock = DockStyle.Fill;
             pnlMenu.Margin = new Padding(8);
@@ -359,114 +355,41 @@ namespace OliveBranchBakes.Forms
             lblMenuHeader.Name = "lblMenuHeader";
             lblMenuHeader.TabIndex = 10;
             lblMenuHeader.Text = "3. Choose From Our Menu";
-            // 
-            // btnItem1
-            // 
-            btnItem1.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem1.Cursor = Cursors.Hand;
-            btnItem1.FlatAppearance.BorderColor = Color.FromArgb(91, 107, 47);
-            btnItem1.FlatAppearance.BorderSize = 2;
-            btnItem1.FlatStyle = FlatStyle.Flat;
-            btnItem1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem1.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem1.Location = new Point(15, 50);
-            btnItem1.Name = "btnItem1";
-            btnItem1.Size = new Size(195, 85);
-            btnItem1.TabIndex = 0;
-            btnItem1.Text = "Chocolate Chip Cookies\r\n$12.00 / dozen";
-            btnItem1.UseVisualStyleBackColor = false;
-            btnItem1.Click += PrototypeButton_Click;
-            // 
-            // btnItem2
-            // 
-            btnItem2.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem2.Cursor = Cursors.Hand;
-            btnItem2.FlatAppearance.BorderColor = Color.FromArgb(91, 107, 47);
-            btnItem2.FlatAppearance.BorderSize = 2;
-            btnItem2.FlatStyle = FlatStyle.Flat;
-            btnItem2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem2.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem2.Location = new Point(218, 50);
-            btnItem2.Name = "btnItem2";
-            btnItem2.Size = new Size(195, 85);
-            btnItem2.TabIndex = 1;
-            btnItem2.Text = "Cinnamon Rolls\r\n$15.00 / 6 pack";
-            btnItem2.UseVisualStyleBackColor = false;
-            btnItem2.Click += PrototypeButton_Click;
-            // 
-            // btnItem3
-            // 
-            btnItem3.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem3.Cursor = Cursors.Hand;
-            btnItem3.FlatAppearance.BorderColor = Color.FromArgb(91, 107, 47);
-            btnItem3.FlatAppearance.BorderSize = 2;
-            btnItem3.FlatStyle = FlatStyle.Flat;
-            btnItem3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem3.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem3.Location = new Point(15, 145);
-            btnItem3.Name = "btnItem3";
-            btnItem3.Size = new Size(195, 85);
-            btnItem3.TabIndex = 2;
-            btnItem3.Text = "Sourdough Bread\r\n$8.00 / loaf";
-            btnItem3.UseVisualStyleBackColor = false;
-            btnItem3.Click += PrototypeButton_Click;
-            // 
-            // btnItem4
-            // 
-            btnItem4.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem4.Cursor = Cursors.Hand;
-            btnItem4.FlatAppearance.BorderColor = Color.FromArgb(91, 107, 47);
-            btnItem4.FlatAppearance.BorderSize = 2;
-            btnItem4.FlatStyle = FlatStyle.Flat;
-            btnItem4.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem4.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem4.Location = new Point(218, 145);
-            btnItem4.Name = "btnItem4";
-            btnItem4.Size = new Size(195, 85);
-            btnItem4.TabIndex = 3;
-            btnItem4.Text = "Blueberry Muffins\r\n$14.00 / dozen";
-            btnItem4.UseVisualStyleBackColor = false;
-            btnItem4.Click += PrototypeButton_Click;
-            // 
-            // btnItem5
-            // 
-            btnItem5.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem5.Cursor = Cursors.Hand;
-            btnItem5.FlatAppearance.BorderColor = Color.FromArgb(91, 107, 47);
-            btnItem5.FlatAppearance.BorderSize = 2;
-            btnItem5.FlatStyle = FlatStyle.Flat;
-            btnItem5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem5.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem5.Location = new Point(15, 240);
-            btnItem5.Name = "btnItem5";
-            btnItem5.Size = new Size(195, 85);
-            btnItem5.TabIndex = 4;
-            btnItem5.Text = "Birthday Cake (8 in)\r\n$35.00 each";
-            btnItem5.UseVisualStyleBackColor = false;
-            btnItem5.Click += PrototypeButton_Click;
-            // 
-            // btnItem6
-            // 
-            btnItem6.BackColor = Color.FromArgb(255, 252, 245);
-            btnItem6.Cursor = Cursors.Hand;
-            btnItem6.FlatAppearance.BorderColor = Color.FromArgb(196, 98, 45);
-            btnItem6.FlatAppearance.BorderSize = 2;
-            btnItem6.FlatStyle = FlatStyle.Flat;
-            btnItem6.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnItem6.ForeColor = Color.FromArgb(74, 46, 26);
-            btnItem6.Location = new Point(218, 240);
-            btnItem6.Name = "btnItem6";
-            btnItem6.Size = new Size(195, 85);
-            btnItem6.TabIndex = 5;
-            btnItem6.Text = "Pumpkin Bread (Fall)\r\n$9.00 / loaf";
-            btnItem6.UseVisualStyleBackColor = false;
-            btnItem6.Click += PrototypeButton_Click;
+            //
+            // lblCategory
+            //
+            lblCategory.AutoSize = true;
+            lblCategory.ForeColor = Color.FromArgb(74, 46, 26);
+            lblCategory.Location = new Point(15, 54);
+            lblCategory.Name = "lblCategory";
+            lblCategory.TabIndex = 13;
+            lblCategory.Text = "Category";
+            //
+            // cboCategory
+            //
+            cboCategory.BackColor = Color.FromArgb(255, 252, 245);
+            cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCategory.Font = new Font("Segoe UI", 12F);
+            cboCategory.ForeColor = Color.FromArgb(74, 46, 26);
+            cboCategory.Location = new Point(110, 50);
+            cboCategory.Name = "cboCategory";
+            cboCategory.Size = new Size(303, 29);
+            cboCategory.TabIndex = 0;
+            cboCategory.SelectedIndexChanged += cboCategory_SelectedIndexChanged;
+            //
+            // flpItems
+            //
+            flpItems.AutoScroll = true;
+            flpItems.Location = new Point(15, 95);
+            flpItems.Name = "flpItems";
+            flpItems.Size = new Size(410, 290);
+            flpItems.TabIndex = 1;
             // 
             // lblQty
             // 
             lblQty.AutoSize = true;
             lblQty.ForeColor = Color.FromArgb(74, 46, 26);
-            lblQty.Location = new Point(15, 340);
+            lblQty.Location = new Point(15, 400);
             lblQty.Name = "lblQty";
             lblQty.TabIndex = 11;
             lblQty.Text = "How many?";
@@ -476,12 +399,12 @@ namespace OliveBranchBakes.Forms
             nudQty.BackColor = Color.FromArgb(255, 252, 245);
             nudQty.Font = new Font("Segoe UI", 14F);
             nudQty.ForeColor = Color.FromArgb(74, 46, 26);
-            nudQty.Location = new Point(15, 366);
+            nudQty.Location = new Point(15, 426);
             nudQty.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             nudQty.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudQty.Name = "nudQty";
             nudQty.Size = new Size(100, 39);
-            nudQty.TabIndex = 6;
+            nudQty.TabIndex = 2;
             nudQty.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnAddItem
@@ -492,19 +415,19 @@ namespace OliveBranchBakes.Forms
             btnAddItem.FlatStyle = FlatStyle.Flat;
             btnAddItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             btnAddItem.ForeColor = Color.FromArgb(251, 246, 236);
-            btnAddItem.Location = new Point(130, 360);
+            btnAddItem.Location = new Point(130, 420);
             btnAddItem.Name = "btnAddItem";
             btnAddItem.Size = new Size(283, 52);
-            btnAddItem.TabIndex = 7;
+            btnAddItem.TabIndex = 3;
             btnAddItem.Text = "Add to Order";
             btnAddItem.UseVisualStyleBackColor = false;
-            btnAddItem.Click += PrototypeButton_Click;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // lblMenuHint
             // 
             lblMenuHint.Font = new Font("Segoe UI", 11F, FontStyle.Italic);
             lblMenuHint.ForeColor = Color.FromArgb(74, 46, 26);
-            lblMenuHint.Location = new Point(15, 425);
+            lblMenuHint.Location = new Point(15, 485);
             lblMenuHint.Name = "lblMenuHint";
             lblMenuHint.Size = new Size(398, 60);
             lblMenuHint.TabIndex = 12;
@@ -516,6 +439,7 @@ namespace OliveBranchBakes.Forms
             pnlOrder.BackColor = Color.FromArgb(255, 252, 245);
             pnlOrder.Controls.Add(lblPickupNote);
             pnlOrder.Controls.Add(btnRemoveItem);
+            pnlOrder.Controls.Add(btnChangeQty);
             pnlOrder.Controls.Add(lblTotal);
             pnlOrder.Controls.Add(lvOrder);
             pnlOrder.Controls.Add(lblOrderHeader);
@@ -563,7 +487,7 @@ namespace OliveBranchBakes.Forms
             lvOrder.Location = new Point(15, 50);
             lvOrder.MultiSelect = false;
             lvOrder.Name = "lvOrder";
-            lvOrder.Size = new Size(308, 290);
+            lvOrder.Size = new Size(308, 250);
             lvOrder.TabIndex = 0;
             lvOrder.View = View.Details;
             // 
@@ -572,10 +496,27 @@ namespace OliveBranchBakes.Forms
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             lblTotal.ForeColor = Color.FromArgb(74, 46, 26);
-            lblTotal.Location = new Point(15, 352);
+            lblTotal.Location = new Point(15, 312);
             lblTotal.Name = "lblTotal";
             lblTotal.TabIndex = 11;
-            lblTotal.Text = "Total: $36.00";
+            lblTotal.Text = "Subtotal: $0.00";
+            //
+            // btnChangeQty
+            //
+            btnChangeQty.BackColor = Color.FromArgb(255, 252, 245);
+            btnChangeQty.Cursor = Cursors.Hand;
+            btnChangeQty.FlatAppearance.BorderColor = Color.FromArgb(74, 46, 26);
+            btnChangeQty.FlatAppearance.BorderSize = 2;
+            btnChangeQty.FlatStyle = FlatStyle.Flat;
+            btnChangeQty.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnChangeQty.ForeColor = Color.FromArgb(74, 46, 26);
+            btnChangeQty.Location = new Point(15, 355);
+            btnChangeQty.Name = "btnChangeQty";
+            btnChangeQty.Size = new Size(308, 50);
+            btnChangeQty.TabIndex = 1;
+            btnChangeQty.Text = "Change Quantity";
+            btnChangeQty.UseVisualStyleBackColor = false;
+            btnChangeQty.Click += btnChangeQty_Click;
             // 
             // btnRemoveItem
             // 
@@ -586,19 +527,19 @@ namespace OliveBranchBakes.Forms
             btnRemoveItem.FlatStyle = FlatStyle.Flat;
             btnRemoveItem.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnRemoveItem.ForeColor = Color.FromArgb(74, 46, 26);
-            btnRemoveItem.Location = new Point(15, 395);
+            btnRemoveItem.Location = new Point(15, 415);
             btnRemoveItem.Name = "btnRemoveItem";
             btnRemoveItem.Size = new Size(308, 50);
-            btnRemoveItem.TabIndex = 1;
+            btnRemoveItem.TabIndex = 2;
             btnRemoveItem.Text = "Remove Selected Item";
             btnRemoveItem.UseVisualStyleBackColor = false;
-            btnRemoveItem.Click += PrototypeButton_Click;
+            btnRemoveItem.Click += btnRemoveItem_Click;
             // 
             // lblPickupNote
             // 
             lblPickupNote.Font = new Font("Segoe UI", 10.5F);
             lblPickupNote.ForeColor = Color.FromArgb(74, 46, 26);
-            lblPickupNote.Location = new Point(15, 460);
+            lblPickupNote.Location = new Point(15, 480);
             lblPickupNote.Name = "lblPickupNote";
             lblPickupNote.Size = new Size(308, 65);
             lblPickupNote.TabIndex = 12;
@@ -641,7 +582,7 @@ namespace OliveBranchBakes.Forms
             lblPrototypeNote.Location = new Point(200, 26);
             lblPrototypeNote.Name = "lblPrototypeNote";
             lblPrototypeNote.TabIndex = 2;
-            lblPrototypeNote.Text = "Prototype: buttons are for design review only.";
+            lblPrototypeNote.Text = "Sign In and Review Order will be added in a later phase.";
             // 
             // btnReviewOrder
             // 
@@ -721,12 +662,9 @@ namespace OliveBranchBakes.Forms
         private RadioButton rbHasAllergy;
         private TextBox txtAllergyDetails;
         private Label lblMenuHeader;
-        private Button btnItem1;
-        private Button btnItem2;
-        private Button btnItem3;
-        private Button btnItem4;
-        private Button btnItem5;
-        private Button btnItem6;
+        private Label lblCategory;
+        private ComboBox cboCategory;
+        private FlowLayoutPanel flpItems;
         private Label lblQty;
         private NumericUpDown nudQty;
         private Button btnAddItem;
@@ -737,6 +675,7 @@ namespace OliveBranchBakes.Forms
         private ColumnHeader colQty;
         private ColumnHeader colPrice;
         private Label lblTotal;
+        private Button btnChangeQty;
         private Button btnRemoveItem;
         private Label lblPickupNote;
         private Panel pnlFooter;
