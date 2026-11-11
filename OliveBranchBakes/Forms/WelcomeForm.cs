@@ -24,7 +24,8 @@ namespace OliveBranchBakes.Forms
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            FormNavigation.ShowPlannedForm("Customer Login / Account");
+            AccountForm accountForm = new AccountForm();
+            accountForm.ShowDialog();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
