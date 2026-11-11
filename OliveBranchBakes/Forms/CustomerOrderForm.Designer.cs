@@ -582,7 +582,7 @@ namespace OliveBranchBakes.Forms
             lblPrototypeNote.Location = new Point(200, 26);
             lblPrototypeNote.Name = "lblPrototypeNote";
             lblPrototypeNote.TabIndex = 2;
-            lblPrototypeNote.Text = "Sign In and Review Order will be added in a later phase.";
+            lblPrototypeNote.Text = "Check your order, then tap Review Order to see your total.";
             // 
             // btnReviewOrder
             // 

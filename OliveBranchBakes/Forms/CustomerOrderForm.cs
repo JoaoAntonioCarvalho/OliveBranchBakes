@@ -4,12 +4,14 @@ using MenuItem = OliveBranchBakes.Models.MenuItem;
 
 namespace OliveBranchBakes.Forms
 {
-    // Phase 3B: the menu, seasonal items and the order list work.
-    // Sign In and Review Order are still planned for a later phase.
+    // Phase 3C: the menu and the order list work, customers can sign in,
+    // and Review Order shows the summary and saves the order.
     public partial class CustomerOrderForm : Form
     {
         private MenuService menuService = new MenuService();
+        private OrderService orderService = new OrderService();
         private Order order = new Order();
+        private AccountCustomer? signedInCustomer;
         private MenuItem? selectedItem;
 
         public CustomerOrderForm()
@@ -33,12 +35,66 @@ namespace OliveBranchBakes.Forms
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            FormNavigation.ShowPlannedForm("Customer Login / Account");
+            AccountForm accountForm = new AccountForm();
+            if (accountForm.ShowDialog() == DialogResult.OK && accountForm.SignedInCustomer != null)
+            {
+                signedInCustomer = accountForm.SignedInCustomer;
+                txtName.Text = signedInCustomer.FullName;
+                txtPhone.Text = signedInCustomer.Phone;
+                txtEmail.Text = signedInCustomer.Email;
+                btnSignIn.Text = "Signed in: " + signedInCustomer.FullName;
+            }
         }
 
         private void btnReviewOrder_Click(object sender, EventArgs e)
         {
-            FormNavigation.ShowPlannedForm("Order Summary");
+            if (order.Items.Count == 0)
+            {
+                MessageBox.Show("Please add at least one item to your order.");
+                return;
+            }
+            if (txtName.Text.Trim() == "" || txtPhone.Text.Trim() == "")
+            {
+                MessageBox.Show("Please type your name and phone number.");
+                return;
+            }
+            if (!rbNoAllergy.Checked && !rbHasAllergy.Checked)
+            {
+                MessageBox.Show("Please tell us if there are any allergies.");
+                return;
+            }
+            if (rbHasAllergy.Checked && txtAllergyDetails.Text.Trim() == "")
+            {
+                MessageBox.Show("Please describe the allergy.");
+                return;
+            }
+
+            if (signedInCustomer != null)
+            {
+                order.Customer = signedInCustomer;
+            }
+            else
+            {
+                GuestCustomer guest = new GuestCustomer();
+                guest.FullName = txtName.Text.Trim();
+                guest.Phone = txtPhone.Text.Trim();
+                guest.Email = txtEmail.Text.Trim();
+                order.Customer = guest;
+            }
+
+            AllergyInfo allergy = new AllergyInfo();
+            allergy.HasAllergy = rbHasAllergy.Checked;
+            allergy.Details = txtAllergyDetails.Text.Trim();
+            order.Allergy = allergy;
+            order.PickupDate = dtpPickup.Value.Date;
+
+            OrderSummaryForm summaryForm = new OrderSummaryForm(order, orderService);
+            if (summaryForm.ShowDialog() == DialogResult.OK)
+            {
+                // the order is saved, start a new one
+                order = new Order();
+                RefreshOrderList();
+            }
         }
 
         private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
