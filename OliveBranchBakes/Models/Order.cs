@@ -1,3 +1,5 @@
+using OliveBranchBakes.Services;
+
 namespace OliveBranchBakes.Models
 {
     // one order can have many items
@@ -56,10 +58,11 @@ namespace OliveBranchBakes.Models
             return subtotal;
         }
 
-        // TODO (later phase): add the 10% discount from the variant card
+        // subtotal minus the discount from the variant card
         public decimal GetTotal()
         {
-            throw new NotImplementedException();
+            PricingService pricing = new PricingService();
+            return pricing.GetTotal(this);
         }
 
         private OrderItem? FindLine(MenuItem item)
