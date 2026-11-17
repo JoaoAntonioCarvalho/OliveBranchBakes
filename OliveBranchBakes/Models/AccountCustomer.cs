@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using OliveBranchBakes.Services;
+using MenuItem = OliveBranchBakes.Models.MenuItem;
 
 namespace OliveBranchBakes.Models
 {
@@ -11,8 +13,23 @@ namespace OliveBranchBakes.Models
 
         public Order Reorder(Order pastOrder)
         {
-            // TODO (later phase): copy the items that are still available
-            throw new NotImplementedException();
+            // copy only the items that are still on the menu for today
+            MenuService menuService = new MenuService();
+            List<MenuItem> available = menuService.GetVisibleItems(DateTime.Today, null);
+
+            Order newOrder = new Order();
+            newOrder.Customer = this;
+            foreach (OrderItem line in pastOrder.Items)
+            {
+                foreach (MenuItem item in available)
+                {
+                    if (line.Item != null && item.MenuItemId == line.Item.MenuItemId)
+                    {
+                        newOrder.AddItem(item, line.Quantity);
+                    }
+                }
+            }
+            return newOrder;
         }
     }
 }

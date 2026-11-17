@@ -52,20 +52,32 @@ namespace OliveBranchBakes.Services
             return highest + 1;
         }
 
-        // TODO (later phase)
+        // Olivia moves the order to the next step (or any step she needs)
         public void UpdateStatus(Order order, OrderStatus newStatus)
         {
-            throw new NotImplementedException();
+            if (order.Status == OrderStatus.Cancelled || order.Status == OrderStatus.PickedUp)
+            {
+                throw new InvalidOperationException("This order is already finished and cannot change.");
+            }
+            order.Status = newStatus;
+            store.SaveOrders(orders);
         }
 
+        // a cancelled order does not use up the baking capacity of its pickup day
         public void CancelOrder(Order order)
         {
-            throw new NotImplementedException();
+            UpdateStatus(order, OrderStatus.Cancelled);
         }
 
+        // Olivia checks the allergy information before she bakes
         public void MarkAllergyReviewed(Order order)
         {
-            throw new NotImplementedException();
+            if (order.Allergy == null)
+            {
+                throw new InvalidOperationException("This order has no allergy information.");
+            }
+            order.Allergy.IsReviewedByAdmin = true;
+            store.SaveOrders(orders);
         }
     }
 }
