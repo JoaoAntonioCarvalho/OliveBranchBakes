@@ -43,6 +43,7 @@ namespace OliveBranchBakes.Forms
             lblDescription = new Label();
             lblDescriptionValue = new Label();
             btnClose = new Button();
+            btnTests = new Button();
             tblInfo.SuspendLayout();
             SuspendLayout();
             // 
@@ -185,6 +186,18 @@ namespace OliveBranchBakes.Forms
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
+            // btnTests
+            // 
+            btnTests.Location = new Point(380, 400);
+            btnTests.Name = "btnTests";
+            btnTests.Size = new Size(160, 50);
+            btnTests.Text = "Run Tests";
+            btnTests.BackColor = Color.FromArgb(217, 162, 58);
+            btnTests.FlatStyle = FlatStyle.Flat;
+            btnTests.ForeColor = Color.FromArgb(74, 46, 26);
+            btnTests.UseVisualStyleBackColor = false;
+            btnTests.Click += btnTests_Click;
+            // 
             // ProjectInfoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -193,6 +206,7 @@ namespace OliveBranchBakes.Forms
             Controls.Add(lblTitle);
             Controls.Add(tblInfo);
             Controls.Add(btnClose);
+            Controls.Add(btnTests);
             BackColor = Color.FromArgb(251, 246, 236);
             ForeColor = Color.FromArgb(74, 46, 26);
             Font = new Font("Segoe UI", 12F);
@@ -223,5 +237,6 @@ namespace OliveBranchBakes.Forms
         private Label lblDescription;
         private Label lblDescriptionValue;
         private Button btnClose;
+        private Button btnTests;
     }
 }
